@@ -10,4 +10,6 @@ Required
 
 Example
 =======
-  ./zabbix_check_status.py --help
+    ./zabbix_check_status.py -h
+
+Visit also [WiKi](http://wiki.enchtex.info/handmade/zabbix/zabbix_check_status).
