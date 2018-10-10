@@ -1,0 +1,4 @@
+# sudo apt-get install python-colorama python-configparser python-simplejson
+colorama
+configparser
+simplejson

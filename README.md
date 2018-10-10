@@ -1,12 +1,13 @@
 Zabbix Check Status
 ======================
 
-Utility for check items/graphs status via Zabbix API
+Utility for check items/triggers status via Zabbix API
 
 Required
 =======
-* Zabbix 3.4
-* Python 3.x
+* Zabbix >=3.2
+* Python >=2.6
 
 Example
 =======
+  ./zabbix_check_status.py --help
