@@ -24,7 +24,7 @@ from slib2.s_zabbix3 import *
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-_TRIGGER_EXCLUDE_ERRORS = ("no status update so far", "processes started", "agent is unavailable", "item is disabled")
+_TRIGGER_EXCLUDE_ERRORS = ("no status update so far", "processes started", "agent is unavailable", "item is disabled", ": item is not supported.")
 
 
 def main():
@@ -166,7 +166,9 @@ def main():
             log.info("Zabbix API connection successfully")
             continue
         #__________________________________________________
-        zabbix_hosts = zabbix_get_host(zabbix_server, selectGroups=True)
+        zabbix_hosts = zabbix_get_host(zabbix_server, selectGroups=True, status=0)
+        # status:
+        # 0 - (default) monitored host;
         if not zabbix_hosts:
             log.warning("No one host found")
             continue

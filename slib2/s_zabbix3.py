@@ -62,20 +62,21 @@ def zabbix_query(zabbix_server, method, params, attempts=1):
 #==================================================================================================
 # JSON API | Get functions
 #==================================================================================================
-def zabbix_get_host(zabbix_server, name=None, selectGroups=False, attempts=1):
-    params =  {'output': "extend", 'sortfield': "name"}
+def zabbix_get_host(zabbix_server, name=None, selectGroups=False, attempts=1, **kwargs):
+    params =  {'output': "extend", 'sortfield': "name", 'filter': {}}
     if selectGroups:
         params['selectGroups'] = "extend"
     if name:
-        params['filter'] = {'host': name}
+        params['filter'].update({'host': name})
     else:
         params['search'] = {'host': ""}
+    params['filter'].update(kwargs)
     #______________________________________________________
     return zabbix_query(zabbix_server, "host.get", params, attempts=attempts)
 
 
 def zabbix_get_template(zabbix_server, name=None, selectDiscoveries=False, attempts=1, **kwargs):
-    params = {'output': "extend", 'sortfield': "name", 'with_items':True, 'filter': {}}
+    params = {'output': "extend", 'sortfield': "name", 'with_items': True, 'filter': {}}
     if isinstance(name, int):
         params['templateids'] = name
     else:
