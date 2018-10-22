@@ -24,7 +24,8 @@ from slib2.s_zabbix3 import *
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-_TRIGGER_EXCLUDE_ERRORS = ("no status update so far", "processes started", "agent is unavailable", "item is disabled", ": item is not supported.")
+_TRIGGER_EXCLUDE_ERRORS = ("no status update so far", "processes started", "agent is unavailable", "item is disabled",
+                            ": item is not supported.", ": not enough data.")
 
 
 def main():
