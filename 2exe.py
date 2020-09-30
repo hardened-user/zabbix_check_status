@@ -1,35 +1,25 @@
 # -*- coding: utf-8 -*-
-import sys
-import py2exe
-from distutils.core import setup
-
+from cx_Freeze import setup, Executable
 
 options = {
-    'py2exe': {
-        'unbuffered': True,
-        'compressed': True,
-        'bundle_files' : 1,
-        'optimize': 2,
+    'build_exe': {
+        'include_files': ['config.ini'],
+        "optimize": 2
     }
 }
 
-console = [
-    {
-        'script': "zabbix_check_status.py",
-        'icon_resources': [(1, "img/zabbix.ico")],
-    }
-]
-
-data_files = [
-    "config.ini"
+executables = [
+    Executable(
+        script="zabbix_check_status.py",
+        base="Console",
+        icon="img/zabbix.ico",
+    )
 ]
 
 setup(
-    version = "1.0",
-    name = "Zabbix Check Status",
-    description = "Utility for check items/triggers status via Zabbix API",
-    console = console,
-    options = options,
-    zipfile = None,
-    data_files = data_files,
+    name="Zabbix Check Status",
+    version="3.0",
+    description="Utility for check items/triggers status via Zabbix API",
+    options=options,
+    executables=executables
 )

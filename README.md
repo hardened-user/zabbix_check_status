@@ -6,7 +6,7 @@ Utility for check items/triggers status via Zabbix API
 Required
 =======
 * Zabbix 3.x, 4.x
-* Python 2.7
+* Python 3.x
 
 Example
 =======
